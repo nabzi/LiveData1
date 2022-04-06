@@ -2,6 +2,9 @@ package com.example.livedata1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.activity.viewModels
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +16,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-
+        var buttonNext = findViewById<Button>(R.id.button1)
+        var progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        var numberText = findViewById<TextView>(R.id.tvNumber)
+        buttonNext.setOnClickListener {
+            vmodel.nextQuestion()
+        }
     }
 }
