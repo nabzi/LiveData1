@@ -22,5 +22,9 @@ class MainActivity : AppCompatActivity() {
         buttonNext.setOnClickListener {
             vmodel.nextQuestion()
         }
+        vmodel.number.observe(this ){
+            progressBar.setProgress(it)
+            numberText.text = it.toString()
+        }
     }
 }
