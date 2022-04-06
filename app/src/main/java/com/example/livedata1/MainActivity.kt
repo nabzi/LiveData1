@@ -19,12 +19,16 @@ class MainActivity : AppCompatActivity() {
         var buttonNext = findViewById<Button>(R.id.button1)
         var progressBar = findViewById<ProgressBar>(R.id.progressBar)
         var numberText = findViewById<TextView>(R.id.tvNumber)
+        var questionText = findViewById<TextView>(R.id.tvQuestion)
         buttonNext.setOnClickListener {
             vmodel.nextQuestion()
         }
         vmodel.number.observe(this ){
             progressBar.setProgress(it)
             numberText.text = it.toString()
+        }
+        vmodel.question.observe(this ){
+            questionText.text = it
         }
     }
 }
