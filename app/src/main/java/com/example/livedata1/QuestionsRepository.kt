@@ -2,26 +2,28 @@ package com.example.livedata1
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 
 object QuestionsRepository {
-    lateinit var db : AppDatabase
+    var db : AppDatabase? = null
+    var questionDao  : QuestionDao? = null
+
     fun initDB(context : Context){
-        db = Room.databaseBuilder(
-            context,
-            AppDatabase::class.java, "database1"
-        ).allowMainThreadQueries()
-            .build()
-        val qDao = db.questionDao()
-        qDao.insertAll(Question(0,"q1" , 1))
+        db = AppDatabase.getAppDataBase(context)
+
+        questionDao = db?.questionDao()
+
+        addTestData()
     }
-    val questionList = arrayListOf (
-        "question 1",
-        "question 2" ,
-        "question 3"
-    )
+
+    private fun addTestData() {
+        questionDao?.insertAll(
+            Question(1,"q1" , 1),
+            Question(2,"q2" , 2)
+        )
+    }
+
     fun getQuestions() : List<Question>{
-        return db.questionDao().getAll()
+        return db!!.questionDao().getAll()
     }
 
 }
