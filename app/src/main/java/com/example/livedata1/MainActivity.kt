@@ -30,5 +30,6 @@ class MainActivity : AppCompatActivity() {
         vmodel.question.observe(this ){
             questionText.text = it.descr
         }
+        //val q =vmodel.question
     }
 }

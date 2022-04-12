@@ -1,7 +1,7 @@
 package com.example.livedata1
 
 import android.content.Context
-import androidx.room.Room
+import androidx.lifecycle.LiveData
 
 object QuestionsRepository {
     var db : AppDatabase? = null
@@ -25,5 +25,22 @@ object QuestionsRepository {
     fun getQuestions() : List<Question>{
         return db!!.questionDao().getAll()
     }
+
+    fun deleteQuestion(q : Question) = db!!.questionDao().delete(q)
+
+    fun getQuestionLiveData() : LiveData<Question>
+    {
+        return db!!.questionDao().getQuestionLiveData(1)
+    }
+
+    fun getQuestion() : Question?
+    {
+       return db!!.questionDao().getQuestion(1)
+    }
+
+    fun add(q: Question) {
+        db!!.questionDao().insertAll(q)
+    }
+
 
 }
