@@ -42,17 +42,24 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         var INSTANCE: AppDatabase? = null
 
-        fun getAppDataBase(context: Context): AppDatabase? {
-            if (INSTANCE == null){
-                synchronized(AppDatabase::class){
-                    INSTANCE =
-                        Room.databaseBuilder(context.applicationContext,
+        fun getAppDataBase(context: Context): AppDatabase {
+            val db : AppDatabase by lazy {
+                Room.databaseBuilder(context.applicationContext,
                             AppDatabase::class.java, "myDB")
                             .allowMainThreadQueries()
                             .build()
-                }
             }
-            return INSTANCE
+            return db
+//            if (INSTANCE == null){
+//                synchronized(AppDatabase::class){
+//                    INSTANCE =
+//                        Room.databaseBuilder(context.applicationContext,
+//                            AppDatabase::class.java, "myDB")
+//                            .allowMainThreadQueries()
+//                            .build()
+//                }
+//            }
+//            return INSTANCE
         }
 
         fun destroyDataBase(){
