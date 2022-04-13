@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             numberText.text = it.toString()
         }
         vmodel.question.observe(this ){
-            questionText.text = it.descr
+            questionText.text = it?.descr
         }
     }
 }
