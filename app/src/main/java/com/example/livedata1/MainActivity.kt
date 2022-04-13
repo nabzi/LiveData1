@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         var buttonNext = findViewById<Button>(R.id.button1)
         var progressBar = findViewById<ProgressBar>(R.id.progressBar)
         var numberText = findViewById<TextView>(R.id.tvNumber)
+        var totalText = findViewById<TextView>(R.id.tvTotal)
         var questionText = findViewById<TextView>(R.id.tvQuestion)
         buttonNext.setOnClickListener {
             vmodel.nextQuestion()
@@ -30,5 +31,9 @@ class MainActivity : AppCompatActivity() {
         vmodel.question.observe(this ){
             questionText.text = it?.descr
         }
+        vmodel.questionCount.observe(this){
+            totalText.text = it.toString()
+        }
+
     }
 }

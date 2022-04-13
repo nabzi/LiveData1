@@ -21,7 +21,7 @@ interface QuestionDao {
     fun getQuestion(num : Int): Question?
 
     @Query("SELECT COUNT(number) FROM Question")
-    fun getQuestionCount(): Int
+    fun getQuestionCount(): LiveData<Int>
 
     @Insert (onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg questions: Question)
@@ -29,7 +29,8 @@ interface QuestionDao {
     @Delete
     fun delete(question : Question)
 
-
+    @Query("DELETE FROM Question")
+    fun clear()
 
 }
 

@@ -1,6 +1,7 @@
 package com.example.livedata1
 
 import android.content.Context
+import kotlin.random.Random
 
 object QuestionsRepository {
     var db : AppDatabase? = null
@@ -16,9 +17,7 @@ object QuestionsRepository {
 
     private fun addTestData() {
         questionDao?.insertAll(
-            Question(1,"Question 1" , 1),
-            Question(2,"Question 2" , 2),
-            Question(3,"Question 3" , 2)
+           newQuestion(), newQuestion() , newQuestion()
         )
     }
 
@@ -29,5 +28,16 @@ object QuestionsRepository {
    fun getQuestionsCount() = db!!.questionDao().getQuestionCount()
 
     fun getQuestion(num : Int) = db!!.questionDao().getQuestion(num)
+
+    fun addQuestion() {
+        db!!.questionDao().insertAll(
+           newQuestion()
+        )
+    }
+    fun newQuestion() : Question{
+        var  a = Random.nextInt()
+        var b = Random.nextInt()
+        return  Question(0 , "$a - $b", a - b)
+    }
 
 }
