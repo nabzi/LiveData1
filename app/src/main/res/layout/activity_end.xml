@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vmodel"
+            type="com.example.livedata1.EndViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".EndActivity">
+
+        <Button
+            android:id="@+id/buttonEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Again"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/tvResult"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{ vmodel.score > 20 ?  `very good ` + vmodel.user.name : `try more ` + vmodel.user.name  }"
+            android:textSize="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@{vmodel.score + ``}"
+            android:visibility="@{vmodel.scoreVisiblity == true ? View.VISIBLE : View.GONE}"
+            android:textSize="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonEnd"
+            app:layout_constraintEnd_toEndOf="@+id/tvResult"
+            app:layout_constraintStart_toStartOf="@+id/tvResult"
+            app:layout_constraintTop_toBottomOf="@+id/buttonShowScore"
+            app:layout_constraintVertical_bias="0.100000024" />
+
+        <Button
+            android:id="@+id/buttonShowScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Show My Score"
+            android:onClick="@{() -> vmodel.onShowScoreClick()}"
+            app:layout_constraintEnd_toEndOf="@+id/tvResult"
+            app:layout_constraintStart_toStartOf="@+id/tvResult"
+            app:layout_constraintTop_toBottomOf="@+id/tvResult" />
+
+        <Button
+            android:id="@+id/buttonNextLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next level"
+            app:visibleForScore="@{true}"
+            app:score="@{vmodel.score}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
