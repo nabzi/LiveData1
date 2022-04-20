@@ -15,5 +15,8 @@ class EndActivity : AppCompatActivity() {
         val binding : ActivityEndBinding  = DataBindingUtil.setContentView(this , R.layout.activity_end)
         binding.vmodel = vmodel
         binding.lifecycleOwner = this
+        binding.buttonShowScore.setOnClickListener {
+
+        }
     }
 }
