@@ -7,9 +7,16 @@ import java.util.*
 
 @Entity
 data class Question(
-    @PrimaryKey(autoGenerate = true) val number: Int,
+    @PrimaryKey(autoGenerate = true)
+    val number: Int,
     val descr: String,
-    val answer: Int?
+    val answer: Int?,
+    val info : List<Info>
+)
+
+data class Info(
+    val plantType : String,
+    val waterNeed : Int
 )
 
 @Dao
@@ -36,6 +43,7 @@ interface QuestionDao {
 
 
 @Database(entities = [Question::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun questionDao(): QuestionDao
 

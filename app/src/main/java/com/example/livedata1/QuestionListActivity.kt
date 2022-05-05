@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class QuestionListActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_list)
@@ -19,20 +20,22 @@ class QuestionListActivity : AppCompatActivity() {
         var recyclerView = findViewById<RecyclerView>(R.id.rvQuestionList)
         recyclerView.adapter = adapter
 
-        var tmpList = listOf(
-            Question(1 , "question 1 description" , 10 ),
-            Question(2 , "question 2 description" , 20 ),
-            Question(3 , "question 3 description" , 30 ),
-            Question(4 , "question 4 description" , 40 )
-        )
-        adapter.submitList(tmpList)
+//        var tmpList = listOf(
+//            Question(1 , "question 1 description" , 10 ),
+//            Question(2 , "question 2 description" , 20 ),
+//            Question(3 , "question 3 description" , 30 ),
+//            Question(4 , "question 4 description" , 40 )
+//        )
+//        adapter.submitList(tmpList)
+//
+//        var tmpList2 = listOf(
+//            Question(1 , "question" , 10 ),
+//            Question(2 , "question 2 description" , 20 ),
+//            Question(4 , "question 4 description" , 40 )
+//        )
 
-        var tmpList2 = listOf(
-            Question(1 , "question" , 10 ),
-            Question(2 , "question 2 description" , 20 ),
-            Question(4 , "question 4 description" , 40 )
-        )
+//        adapter.submitList(tmpList2)
 
-        adapter.submitList(tmpList2)
+
     }
 }

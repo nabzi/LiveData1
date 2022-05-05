@@ -37,7 +37,8 @@ object QuestionsRepository {
     fun newQuestion() : Question{
         var  a = Random.nextInt()
         var b = Random.nextInt()
-        return  Question(0 , "$a - $b", a - b)
+        return  Question(0 , "$a - $b", a - b ,
+            listOf(Info("kaj",1) ,Info("sarv",2) ))
     }
 
 }

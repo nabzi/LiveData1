@@ -13,6 +13,7 @@ class MainViewModel (app: Application) : AndroidViewModel(app){
          QuestionsRepository.initDB(app.applicationContext)
          questionCount = QuestionsRepository.getQuestionsCount()
          question.postValue( QuestionsRepository.getQuestion(1))
+         addQuestion()
      }
     fun nextQuestion() {
        // check if (question nu,ber is in range)
